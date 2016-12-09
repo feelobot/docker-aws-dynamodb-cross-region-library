@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: dynamodb-replication-prod-installs
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: dynamo-replication-prod-installs
+    spec:
+      containers:
+      - name: replicator
+        image: vungle/dynamodb-cross-region-replication:1.1.0
+        command:
+        - "java" 
+        args:
+        - "-jar"
+        - "/home/dynamodb-cross-region-replication-1.1.0.jar --sourceEndpoint 127.0.0.1 --sourceTable prod-installs --destinationEndpoint 127.0.0.1 --destinationTable prod-installs"
+ 
