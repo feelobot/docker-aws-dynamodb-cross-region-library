@@ -1,0 +1,1 @@
+"java" "-jar" "/home/dynamodb-cross-region-replication-1.1.0.jar" --sourceEndpoint $SOURCE_ENDPOINT --sourceTable $SOURCE_TABLE --destinationEndpoint $DESTINATION_ENDPOINT --destinationTable $DESTINATION_TABLE

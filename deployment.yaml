@@ -12,9 +12,13 @@ spec:
       containers:
       - name: replicator
         image: vungle/dynamodb-cross-region-replication:1.1.0
-        command:
-        - "java" 
-        args:
-        - "-jar"
-        - "/home/dynamodb-cross-region-replication-1.1.0.jar --sourceEndpoint 127.0.0.1 --sourceTable prod-installs --destinationEndpoint 127.0.0.1 --destinationTable prod-installs"
+        env:
+        - name: SOURCE_ENDPOINT
+          value: 127.0.0.1
+        - name: SOURCE_TABLE
+          value: prod-installs
+        - name: DESTINATION_ENDPOINT
+          value: 127.0.0.2
+        - name: DESTINATION_TABLE
+          value: prod-installs
  
