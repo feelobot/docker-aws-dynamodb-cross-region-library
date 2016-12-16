@@ -11,14 +11,23 @@ spec:
     spec:
       containers:
       - name: replicator
+        imagePullPolicy: "Always"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "2Gi"
+            cpu: "2000m"
         image: vungle/dynamodb-cross-region-replication:1.1.0
         env:
         - name: SOURCE_ENDPOINT
-          value: 127.0.0.1
+          value: streams.dynamodb.us-east-1.amazonaws.com
         - name: SOURCE_TABLE
           value: prod-installs
         - name: DESTINATION_ENDPOINT
-          value: 127.0.0.2
+          value: streams.dynamodb.us-west-2.amazonaws.com
         - name: DESTINATION_TABLE
           value: prod-installs
- 
+        - name: TASK_NAME
+          value: prod-installs-east-to-west
