@@ -19,7 +19,7 @@ spec:
           limits:
             memory: "2Gi"
             cpu: "2000m"
-        image: vungle/dynamodb-cross-region-replication:1.1.0
+        image: vungle/aws-dynamodb-cross-region-library:1.1.0
         env:
         - name: SOURCE_ENDPOINT
           value: streams.dynamodb.us-east-1.amazonaws.com
@@ -31,3 +31,13 @@ spec:
           value: prod-installs
         - name: TASK_NAME
           value: prod-installs-east-to-west
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: dynamodb-aws-credentials
+              key: id
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: dynamodb-aws-credentials
+              key: secret
