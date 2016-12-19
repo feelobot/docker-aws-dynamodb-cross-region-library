@@ -22,11 +22,11 @@ spec:
         image: vungle/aws-dynamodb-cross-region-library:1.1.0
         env:
         - name: SOURCE_ENDPOINT
-          value: streams.dynamodb.us-east-1.amazonaws.com
+          value: dynamodb.us-east-1.amazonaws.com
         - name: SOURCE_TABLE
           value: prod-installs
         - name: DESTINATION_ENDPOINT
-          value: streams.dynamodb.us-west-2.amazonaws.com
+          value: dynamodb.us-west-2.amazonaws.com
         - name: DESTINATION_TABLE
           value: prod-installs
         - name: TASK_NAME
